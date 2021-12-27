@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Date = () => {
+const Date = ({date}) => {
     return(
         <div>
             <li>
                 <div>
-                    일
+                    {date}
                 </div>
             </li>
         </div>
