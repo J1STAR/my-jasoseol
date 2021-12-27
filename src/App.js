@@ -1,9 +1,11 @@
+import Calendar from './component/Calendar';
+import Header from './component/Header'
 
-
-function App() {
+const App = () => {
   return (
     <div className="App">
-      Calendar
+      <Header />
+      <Calendar />
     </div>
   );
 }
