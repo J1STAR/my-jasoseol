@@ -1,4 +1,5 @@
 import React from 'react';
+import Job from './Job'
 
 const Date = ({date}) => {
     return(
@@ -6,6 +7,9 @@ const Date = ({date}) => {
             <li>
                 <div>
                     {date}
+                </div>
+                <div>
+                    <Job />
                 </div>
             </li>
         </div>

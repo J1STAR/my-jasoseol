@@ -11,10 +11,10 @@ const App = () => {
   const [month, setMonth] = useState(currentMonth);
   const [thisDates, setThisDates] = useState([])
 
-  const getDates = (month) => {
+  const getDates = (year, month) => {
 
-    const previousLast = new Date(currentYear, currentMonth - 1, 0)
-    const thisLast = new Date(currentYear, currentMonth, 0)
+    const previousLast = new Date(year, month - 1, 0)
+    const thisLast = new Date(year, month, 0)
     const preLastDate = previousLast.getDate()
     const preLastDay = previousLast.getDay()
     const thisLastDate = thisLast.getDate()
@@ -40,13 +40,17 @@ const App = () => {
   }
 
   useEffect(() => {
-    setThisDates(getDates(month))
-  }, [month])
+    setThisDates(getDates(year, month))
+  }, [year, month])
 
   return (
     <div className="App">
-      <Header year={year} month={month} />
-      <Calendar thisDates={thisDates} />
+      <div>
+        <Header year={year} month={month} setMonth={setMonth} setYear={setYear} />
+      </div>
+      <div className="w-10/12 h-5/6">
+        <Calendar thisDates={thisDates} />
+      </div>
     </div>
   );
 }

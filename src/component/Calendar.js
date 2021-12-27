@@ -4,10 +4,12 @@ import Date from './Date'
 const Calendar = ({thisDates}) => {
 
   return(
-    <div>
+    <div className="grid grid-cols-7 gap-4 list-none">
       {thisDates.map((date, index) => {
         return(
-          <Date date={date}/>
+          <div>
+            <Date date={date}/>
+          </div>
         )
       })}
     </div>
