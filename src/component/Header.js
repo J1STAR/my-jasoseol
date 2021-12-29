@@ -23,14 +23,14 @@ const Header = ({year, month, setMonth, setYear}) => {
 
   return(
     <div>
-        <div className="text-3xl flex">
+        <div className="text-3xl flex justify-center">
             <div onClick={() => decreaseMonth(year, month)}> &lt; </div>
             <div>{year}년 {month}월</div>
             <div onClick={() => increaseMonth(year, month)}> &gt; </div>
         </div>
         <div className="flex list-none">
             {days.map((day, index) => {
-                return <li key={index}>{day}</li>
+                return <li className="grid grid-cols-7 gap-4 list-none" key={index}>{day}</li>
             })}
         </div>
     </div>

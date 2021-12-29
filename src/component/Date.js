@@ -44,15 +44,15 @@ const Date = ({year, month, date, data}) => {
     console.log(openJobList, closedJobList)
     return(
         <div>
-            <li>
-                <div>
+            <li className="h-44">
+                <div className="bg-orange-300 p-2">
                     {date}
                 </div>
                 <div>
                     {openJobList.map(open => {
                         return(
                             <div>
-                            <button onClick={() => setShow(true)}>시작 : {open}</button>
+                            <button onClick={() => setShow(true)}>시 : {open}</button>
                             <Modal onClose={() => setShow(false)} show={show} open={open} data={data}/>
                             </div>
                         )
@@ -62,7 +62,7 @@ const Date = ({year, month, date, data}) => {
                     {closedJobList.map(closed => {
                         return(
                             <div>
-                            <button onClick={() => setShow(true)}> 마감 : {closed}</button>
+                            <button onClick={() => setShow(true)}> 마 : {closed}</button>
                             <Modal2 onClose={() => setShow(false)} show={show} closed={closed} data={data}/>
                             </div>
                         )
