@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Calendar from './component/Calendar';
 import Header from './component/Header'
+import jobs from './jobData'
 
 const App = () => {
   let date = new Date()
@@ -10,6 +11,7 @@ const App = () => {
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
   const [thisDates, setThisDates] = useState([])
+  let [data, setData] = useState(jobs)
 
   const getDates = (year, month) => {
 
@@ -43,13 +45,15 @@ const App = () => {
     setThisDates(getDates(year, month))
   }, [year, month])
 
+  console.log(data)
+
   return (
     <div className="App">
       <div>
         <Header year={year} month={month} setMonth={setMonth} setYear={setYear} />
       </div>
       <div className="w-10/12 h-5/6">
-        <Calendar thisDates={thisDates} />
+        <Calendar year={year} month={month} thisDates={thisDates} data={data}/>
       </div>
     </div>
   );
