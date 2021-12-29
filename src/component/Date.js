@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import Job from './Job'
+import Modal from './Modal'
 
 const Date = ({year, month, date, data}) => {
-
+    const [show, setShow] = useState(false)
     const [openJobList, setOpenJobList] = useState([])
     const [closedJobList, setClosedJobList] = useState([])
 
@@ -14,10 +13,9 @@ const Date = ({year, month, date, data}) => {
             const jobMonth = d.start_time.slice(5, 7)
             const jobDate = d.start_time.slice(8, 10)
             if(year == jobYear && month == jobMonth && date == jobDate){
-                openJobs.push(d.name)
+                openJobs.push(d.name.toString())
             }
         })
-        console.log(openJobs)
         return openJobs
     }
 
@@ -28,10 +26,9 @@ const Date = ({year, month, date, data}) => {
             const jobMonth = d.end_time.slice(5, 7)
             const jobDate = d.end_time.slice(8, 10)
             if(year == jobYear && month == jobMonth && date == jobDate){
-                closedJobs.push(d.name)
+                closedJobs.push(d.name.toString())
             }
         })
-        console.log(closedJobs)
         return closedJobs
     }
 
@@ -43,6 +40,7 @@ const Date = ({year, month, date, data}) => {
         setClosedJobList(matchClosedJob(year, month, date, data))
     }, [])
 
+    console.log(openJobList, closedJobList)
     return(
         <div>
             <li>
@@ -50,10 +48,23 @@ const Date = ({year, month, date, data}) => {
                     {date}
                 </div>
                 <div>
-                    {openJobList}
+                    {openJobList.map(open => {
+                        return(
+                            <div>
+                            <button onClick={() => setShow(true)}>시작 : {open}</button>
+                            <Modal onClose={() => setShow(false)} show={show} open={open}/>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className="font-bold">
-                    {closedJobList}
+                    {closedJobList.map(closed => {
+                        return(
+                            <div>
+                            마감 : {closed}
+                            </div>
+                        )
+                    })}
                 </div>
             </li>
         </div>
