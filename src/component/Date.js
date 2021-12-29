@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal'
+import Modal2 from './Modal2'
 
 const Date = ({year, month, date, data}) => {
     const [show, setShow] = useState(false)
@@ -52,7 +53,7 @@ const Date = ({year, month, date, data}) => {
                         return(
                             <div>
                             <button onClick={() => setShow(true)}>시작 : {open}</button>
-                            <Modal onClose={() => setShow(false)} show={show} open={open}/>
+                            <Modal onClose={() => setShow(false)} show={show} open={open} data={data}/>
                             </div>
                         )
                     })}
@@ -61,7 +62,8 @@ const Date = ({year, month, date, data}) => {
                     {closedJobList.map(closed => {
                         return(
                             <div>
-                            마감 : {closed}
+                            <button onClick={() => setShow(true)}> 마감 : {closed}</button>
+                            <Modal2 onClose={() => setShow(false)} show={show} closed={closed} data={data}/>
                             </div>
                         )
                     })}
